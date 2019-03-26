@@ -1,0 +1,253 @@
+#Corrext WarrantyCost
+df['WarrantyCost'].fillna(df['WarrantyCost'].mode()[0], inplace=True)
+
+
+# In[69]:
+
+
+df['WarrantyCost'].value_counts()
+
+
+# In[70]:
+
+
+df['WarrantyCost'].unique()
+
+
+# In[71]:
+
+
+#Correct VehBCost
+df['VehBCost'] = df['VehBCost'].astype(str)
+
+
+# In[72]:
+
+
+df['VehBCost'].fillna(df['VehBCost'].mode(), inplace=True)
+
+
+# In[73]:
+
+
+df['VehBCost'].value_counts()
+
+
+# In[74]:
+
+
+df['VehBCost'].unique()
+
+
+# In[75]:
+
+
+#Correct VNST
+df['VNST'].fillna(df['VNST'].mode()[0], inplace=True)
+
+
+# In[76]:
+
+
+df['VNST'].unique()
+
+
+# In[77]:
+
+
+df['VNST'].value_counts()
+
+
+# In[78]:
+
+
+
+df['MMRCurrentRetailCleanPrice'].value_counts()
+
+
+# In[79]:
+
+
+df['MMRCurrentRetailCleanPrice'].describe()
+
+
+# In[108]:
+
+
+#Correct MMRCurrentRetailCleanPrice
+df['MMRCurrentRetailCleanPrice'] = df['MMRCurrentRetailCleanPrice'].astype(str)
+
+
+# In[109]:
+
+
+mask = df['MMRCurrentRetailCleanPrice'] =='?'
+
+
+# In[110]:
+
+
+df.loc[mask, 'MMRCurrentRetailCleanPrice'] = np.nan
+
+
+# In[111]:
+
+
+mask = df['MMRCurrentRetailCleanPrice'] =='nan'
+
+
+# In[112]:
+
+
+df.loc[mask, 'MMRCurrentRetailCleanPrice'] = np.nan
+
+
+# In[113]:
+
+
+df['MMRCurrentRetailCleanPrice'].fillna(df['MMRCurrentRetailCleanPrice'].median(), inplace=True)
+
+
+# In[114]:
+
+
+df['MMRCurrentRetailCleanPrice'].value_counts()
+
+
+# In[115]:
+
+
+df['MMRCurrentRetailCleanPrice'].unique()
+
+
+# In[116]:
+
+
+#Correct MMRCurrentAuctionAveragePrice
+df['MMRCurrentAuctionAveragePrice'] = df['MMRCurrentAuctionAveragePrice'].astype(str)
+
+
+# In[117]:
+
+
+mask = df['MMRCurrentAuctionAveragePrice'] =='?'
+
+
+# In[118]:
+
+
+df.loc[mask, 'MMRCurrentAuctionAveragePrice'] = np.nan
+
+
+# In[119]:
+
+
+#it has string 'nan'
+mask = df['MMRCurrentAuctionAveragePrice'] =='nan'
+
+
+# In[120]:
+
+
+df.loc[mask, 'MMRCurrentAuctionAveragePrice'] = np.nan
+
+
+# In[121]:
+
+
+df['MMRCurrentAuctionAveragePrice'].fillna(df['MMRCurrentAuctionAveragePrice'].median(), inplace=True)
+
+
+# In[122]:
+
+
+df['MMRCurrentAuctionAveragePrice'].value_counts()
+
+
+# In[123]:
+
+
+df['MMRCurrentAuctionAveragePrice'].unique()
+
+
+# In[124]:
+
+
+#Correct Nationality
+mask = df['Nationality'] =='?'
+df.loc[mask, 'Nationality'] = np.nan
+df['Nationality'].fillna(df['Nationality'].mode()[0], inplace=True)
+
+
+# In[125]:
+
+
+df['Nationality'].unique()
+
+
+# In[126]:
+
+
+df['Nationality'].value_counts()
+
+
+# In[127]:
+
+
+#Correct Size
+mask = df['Size'] =='?'
+df.loc[mask, 'Size'] = np.nan
+df['Size'].fillna(df['Size'].mode()[0], inplace=True)
+
+
+# In[128]:
+
+
+df['Size'].unique()
+
+
+# In[129]:
+
+
+df['Size'].value_counts()
+
+
+# In[133]:
+
+
+#Correct Color
+mask = df['Color'] =='?'
+mask = df['Color'] =='NOT AVAIL'
+df.loc[mask, 'Color'] = np.nan
+df['Color'].fillna(df['Color'].mode()[0], inplace=True)
+
+
+# In[134]:
+
+
+df['Color'].unique()
+
+
+# In[135]:
+
+
+df['Color'].value_counts()
+
+
+# In[136]:
+
+
+#Correct Make
+df['Make'].fillna(df['Make'].mode()[0], inplace=True)
+
+
+# In[137]:
+
+
+df['Make'].unique()
+
+
+# In[138]:
+
+
+df['Make'].value_counts()
